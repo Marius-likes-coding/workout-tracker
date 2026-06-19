@@ -31,10 +31,6 @@ jobs:
       # (https://<user>.github.io/<repo>/). Derived automatically.
       - name: Build
         run: npm run build -- --base="/${{ github.event.repository.name }}/"
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
