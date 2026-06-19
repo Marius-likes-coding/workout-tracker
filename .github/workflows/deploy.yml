@@ -24,7 +24,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      # npm install (not ci) tolerates cross-npm-version drift in optional,
+      # platform-conditional deps (e.g. @emnapi/*) that strict ci rejects.
+      - run: npm install --no-audit --no-fund
       # Base path must match the repo name for project pages
       # (https://<user>.github.io/<repo>/). Derived automatically.
       - name: Build
